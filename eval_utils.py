@@ -92,36 +92,6 @@ def evaluate_SemEvalEc(outputs, targets, dataset):
     return metrics
 
 
-def extract_ISEAR(seq_list, emotion_dict):
-    extractions = []
-    for seq in seq_list:
-        target = seq.split()
-        target = target[6]
-        # target = ''.join(target)
-        # temp = target.split(',')
-        # print(temp)
-        # for e in temp:
-        if target in emotion_dict:
-            extractions.append(emotion_dict[target])
-        else:
-            extractions.append(0)
-
-    return extractions
-
-
-def evaluate_ISEAR(outputs, targets):
-    outputs = sum(outputs, [])
-    targets = sum(targets, [])
-    emotions = ['joy', 'fear', 'anger', 'sadness', 'disgust', 'shame', 'guilt']
-    emotion_dict = {emo: idx for idx, emo in enumerate(emotions)}
-    pred = extract_ISEAR(outputs, emotion_dict)
-    gold = extract_ISEAR(targets, emotion_dict)
-
-    results = classification_report(gold, pred)
-    print(results)
-    return results
-
-
 def evaluate_GoEmotion(outputs, targets, dataset):
     emotion_label = ['admiration', 'amusement', 'anger', 'annoyance', 'approval', 'caring', 'confusion',
                      'curiosity', 'desire', 'disappointment', 'disapproval', 'disgust', 'embarrassment',
@@ -177,39 +147,3 @@ def evaluate(outputs, targets, dataset):
     elif dataset == 'GoEmotions':
         results = evaluate_GoEmotion(outputs, targets, dataset)
     return results
-
-
-if __name__ == '__main__':
-    df = pd.read_csv('sem42_out.csv')
-    pred = df['0'].values.tolist()
-    target = df['1'].values.tolist()
-
-    l1, l2, l3, l4 = [], [], [], []
-    tl1, tl2, tl3, tl4 = [], [], [], []
-
-    l5, tl5 = [], []
-
-    for i in range(len(target)):
-        if len(target[i].split(' [SSEP] ')) == 1:
-            tl1.append(target[i])
-            l1.append(pred[i])
-
-        elif len(target[i].split(' [SSEP] ')) == 2:
-            tl2.append(target[i])
-            l2.append(pred[i])
-
-        elif len(target[i].split(' [SSEP] ')) == 3:
-            tl3.append(target[i])
-            l3.append(pred[i])
-
-        # elif len(target[i].split(' [SSEP] ')) == 4:
-        #     tl4.append(target[i])
-        #     l4.append(pred[i])
-
-        else:
-            tl5.append(target[i])
-            l5.append(pred[i])
-
-    # aa = evaluate_GoEmotion(outputs=[l1], targets=[tl1], dataset='GoEmotions')
-    aa = evaluate_SemEvalEc(outputs=[l5], targets=[tl5], dataset='SemEvalEc')
-    # print(len(tl4))
