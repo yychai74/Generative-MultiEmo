@@ -28,19 +28,19 @@ For SemEval 2018 dataset, we utilized a tweet pre-process tool named [ekphrasis]
 
 ## 4. Training
 
-For GoEmotions dataset, run:
+For GoEmotions dataset, please run:
 
 ```bash
 >> python main.py --CLP
 ```
 
-For SemEval 2018 dataset, run:
+For SemEval 2018 dataset, please run:
 
 ```bash
 >> python main.py --dataset 'SemEvalEc' --num_beams 2 --CLP
 ```
 
-For ablation study, run:
+For ablation study, please run:
 
 ```bash
 >> python main.py
