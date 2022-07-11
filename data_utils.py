@@ -38,21 +38,6 @@ def get_sem_data(path, data_type):
     return sents, labels, label_idx
 
 
-def get_ISEAR_data(path):
-    sents, labels = [], []
-    df = pd.read_csv(path, names=['label', 'sentence'])
-    sents_array = np.array(df.iloc[:, 1:]).tolist()
-    label_array = np.array(df.iloc[:, 0:1]).flatten().tolist()
-    for sent in sents_array:
-        temp = sent[0]
-        temp_l = temp.split()
-        if temp_l != '':
-            sents.append(temp_l)
-
-    labels = label_array
-    return sents, labels
-
-
 def get_GoEmotions_data(path, data_dir):
     sents, targets, label_idx = [], [], []
     df = pd.read_csv(path, sep="\t", names=['sentence', 'label', 'null'])
@@ -125,8 +110,8 @@ class EmotionDataset(Dataset):
         source_ids = self.inputs[index]["input_ids"].squeeze()
         target_ids = self.targets[index]["input_ids"].squeeze()
 
-        src_mask = self.inputs[index]["attention_mask"].squeeze()  # might need to squeeze
-        target_mask = self.targets[index]["attention_mask"].squeeze()  # might need to squeeze
+        src_mask = self.inputs[index]["attention_mask"].squeeze()
+        target_mask = self.targets[index]["attention_mask"].squeeze()
 
         label_idx = self.label_idx[index]
 
