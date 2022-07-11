@@ -46,10 +46,3 @@ For ablation study, please run:
 >> python main.py
 >> python main.py --dataset 'SemEvalEc' --num_beams 2
 ```
-
-## 5. Credits
-
-We thank for the following open sourced projects and their contributions:
-- https://github.com/IsakZhang/ABSA-QUAD
-- https://github.com/HobbitLong/SupContrast
-- https://github.com/Lightning-AI/lightning
