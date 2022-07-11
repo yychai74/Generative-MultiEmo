@@ -114,26 +114,19 @@ def extract_GoEmotion(seq_list, emotion_dict):
     for seq in seq_list:
         for target in seq:
             num = np.zeros((len(emotion_dict),), dtype=int).tolist()
-            # target = target.strip('.')
             targets = target.split(' [SSEP] ')
-            # targets = target.split()
-            # targets = target.split(', ')
             for sen in targets:
                 words = sen.split()
                 try:
                     emo = words[2].strip('.')
                     # emo = sen
                 except IndexError:
-                    print(sen)
                     emo = ''
-            # print(temp)
-            # for e in temp:
-            # for emo in targets:
+
                 if emo != '' and emo in emotion_dict.keys():
                     idx = emotion_dict[emo]
                     num[idx] = 1
                 else:
-                    print(targets)
                     num = np.zeros((len(emotion_dict),), dtype=np.int).tolist()
                     break
             extractions.append(num)
