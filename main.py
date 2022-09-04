@@ -217,7 +217,7 @@ if __name__ == '__main__':
     # print(weight)
 
     if args.do_train:
-        print("\n", "=" * 30, f"NEW EXP: train on {args.dataset}", "=" * 30, "\n")
+        print("\n", f"Train on {args.dataset}", "\n")
         seed_everything(args.seed)
         model = T5EmotionGeneration(hparams=args)
         tokenizer = model.tokenizer
@@ -226,14 +226,11 @@ if __name__ == '__main__':
 
         dataset = get_dataset(tokenizer=tokenizer, data_type='dev', args=args)
         data_sample = dataset[0]
-        data_sample1 = dataset[109]
         print('Input :', tokenizer.decode(data_sample['source_ids'], skip_special_tokens=True))
         print('Output:', tokenizer.decode(data_sample['target_ids'], skip_special_tokens=True))
         print(data_sample["labels_idx"])
-        print('Input :', tokenizer.decode(data_sample1['source_ids'], skip_special_tokens=True))
-        print('Output:', tokenizer.decode(data_sample1['target_ids'], skip_special_tokens=True))
-        print(data_sample1["labels_idx"])
-        print("\n****** Conduct Training ******")
+
+        print("\n Start Training")
 
         callback = pl.callbacks.ModelCheckpoint(
             dirpath=args.output_dir, monitor='val_loss', mode='min', save_top_k=3
