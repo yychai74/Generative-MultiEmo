@@ -1,5 +1,5 @@
 # Prompt-Based Generative Multi-label Emotion Prediction with Label Contrastive Learning
-This is the source code for NLPCC 2022 paper: Prompt-Based Generative Multi-label Emotion Prediction with Label Contrastive Learning
+This is the source code for NLPCC 2022 paper: [Prompt-Based Generative Multi-label Emotion Prediction with Label Contrastive Learning](https://link.springer.com/chapter/10.1007/978-3-031-17120-8_43)
 ## 1. Environments
 
 ```
