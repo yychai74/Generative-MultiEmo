@@ -49,7 +49,7 @@ For ablation study, please run:
 
 ## 5. Ciation
 
-If you find our work useful for your work or reaserch, please kindly cite our paper:
+If you find our work useful for your application or reaserch, please kindly cite our paper:
 
 ```
 @InProceedings{Generative-MultiEmo,
