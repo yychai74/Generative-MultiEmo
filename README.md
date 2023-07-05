@@ -46,3 +46,24 @@ For ablation study, please run:
 >> python main.py
 >> python main.py --dataset 'SemEvalEc' --num_beams 2
 ```
+
+## 5. Ciation
+
+If you find our work useful for your work or reaserch, please kindly cite our paper:
+
+```
+@InProceedings{Generative-MultiEmo,
+author={Chai, Yuyang
+and Teng, Chong
+and Fei, Hao
+and Wu, Shengqiong
+and Li, Jingye
+and Cheng, Ming
+and Ji, Donghong
+and Li, Fei},
+title={Prompt-Based Generative Multi-label Emotion Prediction with Label Contrastive Learning},
+booktitle={Natural Language Processing and Chinese Computing},
+year={2022},
+pages={551--563},
+}
+```
